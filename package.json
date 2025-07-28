@@ -3,11 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
- "scripts": {
-  "start": "node index.js",
-  "dev": "nodemon index.js",
-  "test": "echo \"Error: no test specified\" && exit 1"
-},
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "setup": "echo \"Please configure your .env file with MongoDB URI and Clerk keys\"",
+    "db:check": "node -e \"console.log('MongoDB URI:', process.env.MONGODB_URI || 'Not configured')\""
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Kevin1skyrj/Job_Application_Tracker_Backend.git"
@@ -21,9 +23,13 @@
   },
   "homepage": "https://github.com/Kevin1skyrj/Job_Application_Tracker_Backend#readme",
   "dependencies": {
+    "@clerk/clerk-sdk-node": "^4.13.23",
     "cors": "^2.8.5",
     "dotenv": "^17.2.1",
     "express": "^5.1.0",
     "mongoose": "^8.16.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
   }
 }
