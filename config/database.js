@@ -8,7 +8,6 @@ const connectDB = async () => {
       socketTimeoutMS: 30000, // 30 seconds
       connectTimeoutMS: 30000, // 30 seconds
       maxPoolSize: 10, // Maintain up to 10 socket connections
-      serverSelectionRetries: 5, // Retry server selection 5 times
       retryWrites: true,
       w: 'majority'
     });
