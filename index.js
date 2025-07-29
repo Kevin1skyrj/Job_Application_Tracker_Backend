@@ -18,7 +18,7 @@ app.use(cors({
   origin: [
     'http://localhost:3000',
     'http://localhost:3001', 
-    'https://job-flow-ten.vercel.app', // Your actual Vercel URL
+    'https://job-flow-ten.vercel.app', 
     process.env.FRONTEND_URL || 'http://localhost:3000'
   ],
   credentials: true
