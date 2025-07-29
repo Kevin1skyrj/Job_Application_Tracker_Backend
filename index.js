@@ -15,7 +15,12 @@ connectDB();
 
 // Middleware
 app.use(cors({
-  origin: process.env.FRONTEND_URL || 'http://localhost:3000',
+  origin: [
+    'http://localhost:3000',
+    'http://localhost:3001', 
+    'https://job-flow-ten.vercel.app', // Your actual Vercel URL
+    process.env.FRONTEND_URL || 'http://localhost:3000'
+  ],
   credentials: true
 }));
 
@@ -36,7 +41,9 @@ app.get('/health', (req, res) => {
     success: true,
     message: 'Job Tracker API is running! 🚀',
     timestamp: new Date().toISOString(),
-    environment: process.env.NODE_ENV || 'development'
+    environment: process.env.NODE_ENV || 'production',
+    version: '1.0.0',
+    mongodb: mongoose.connection.readyState === 1 ? 'Connected' : 'Disconnected'
   });
 });
 
@@ -51,8 +58,28 @@ app.use(errorHandler);
 
 // Start server
 const PORT = process.env.PORT || 5000;
-const server = app.listen(PORT, () => {
-  console.log(`🚀 Server running on port ${PORT} in ${process.env.NODE_ENV || 'development'} mode`);
+const server = app.listen(PORT, '0.0.0.0', () => {
+  console.log(`🚀 Server running on port ${PORT} in ${process.env.NODE_ENV || 'production'} mode`);
+  console.log(`📡 Health check: http://localhost:${PORT}/health`);
+});
+
+// Graceful shutdown
+process.on('SIGINT', async () => {
+  console.log('\n📴 Shutting down gracefully...');
+  server.close(async () => {
+    await mongoose.connection.close();
+    console.log('💾 Database connection closed');
+    process.exit(0);
+  });
+});
+
+process.on('SIGTERM', async () => {
+  console.log('\n📴 Received SIGTERM, shutting down gracefully...');
+  server.close(async () => {
+    await mongoose.connection.close();
+    console.log('💾 Database connection closed');
+    process.exit(0);
+  });
 });
 
 // Handle unhandled promise rejections

@@ -1,4 +1,66 @@
-# Job Application Tracker - Backend API
+# Job Tracker Backend API
+
+## 🚀 Production Deployment on Render
+
+This is the backend API for the Job Application Tracker application.
+
+### 📋 Prerequisites
+- Node.js 18+
+- MongoDB Atlas account
+- Render account
+- GitHub repository
+
+### 🔧 Environment Variables Required
+
+**For Render Deployment, add these to your Render dashboard:**
+
+```env
+NODE_ENV=production
+PORT=10000
+MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/jobtracker
+CLERK_SECRET_KEY=sk_test_7mP6dk1CTlLKf9TKwSBkqhh9X3xR1trQt7ZVQTWBEL
+FRONTEND_URL=https://job-flow-ten.vercel.app
+```
+
+**Note:** Don't copy the `.env` file to Render. Instead, manually add each variable in Render's dashboard.
+
+### 🌐 API Endpoints
+
+#### Health Check
+- **GET** `/health` - Server health status
+
+#### Jobs API
+- **GET** `/api/jobs` - Get all jobs for authenticated user
+- **POST** `/api/jobs` - Create a new job
+- **PUT** `/api/jobs/:id` - Update a job
+- **DELETE** `/api/jobs/:id` - Delete a job
+
+### 🔐 Authentication
+Uses Clerk authentication with Bearer tokens.
+
+### 📊 Database
+MongoDB with Mongoose ODM.
+
+### 🚀 Deployment Status
+- **Environment**: Production
+- **Platform**: Render
+- **Database**: MongoDB Atlas
+- **Authentication**: Clerk
+
+### 📞 Health Check
+Visit: `https://your-render-app.onrender.com/health`
+
+Expected response:
+```json
+{
+  "success": true,
+  "message": "Job Tracker API is running! 🚀",
+  "timestamp": "2025-01-29T...",
+  "environment": "production",
+  "version": "1.0.0",
+  "mongodb": "Connected"
+}
+```
 
 A Node.js/Express backend API for managing job applications with MongoDB and Clerk authentication.
 

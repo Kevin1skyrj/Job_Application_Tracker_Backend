@@ -1,32 +1,32 @@
 {
-  "name": "job_application_tracker_backend",
+  "name": "job-tracker-backend",
   "version": "1.0.0",
-  "description": "",
+  "description": "Backend API for Job Application Tracker",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "setup": "echo \"Please configure your .env file with MongoDB URI and Clerk keys\"",
-    "db:check": "node -e \"console.log('MongoDB URI:', process.env.MONGODB_URI || 'Not configured')\""
+    "build": "echo 'No build step required'",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Kevin1skyrj/Job_Application_Tracker_Backend.git"
+  "engines": {
+    "node": ">=18.0.0"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "job-tracker",
+    "api",
+    "nodejs",
+    "express"
+  ],
+  "author": "Rajat Pandey",
   "license": "ISC",
   "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/Kevin1skyrj/Job_Application_Tracker_Backend/issues"
-  },
-  "homepage": "https://github.com/Kevin1skyrj/Job_Application_Tracker_Backend#readme",
   "dependencies": {
     "@clerk/clerk-sdk-node": "^4.13.23",
     "cors": "^2.8.5",
     "dotenv": "^17.2.1",
     "express": "^5.1.0",
+    "mongodb": "^6.18.0",
     "mongoose": "^8.16.5"
   },
   "devDependencies": {
