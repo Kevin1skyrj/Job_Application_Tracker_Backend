@@ -12,12 +12,7 @@
   "engines": {
     "node": ">=18.0.0"
   },
-  "keywords": [
-    "job-tracker",
-    "api",
-    "nodejs",
-    "express"
-  ],
+  "keywords": ["job-tracker", "api", "nodejs", "express"],
   "author": "Rajat Pandey",
   "license": "ISC",
   "type": "commonjs",
@@ -26,7 +21,6 @@
     "cors": "^2.8.5",
     "dotenv": "^17.2.1",
     "express": "^5.1.0",
-    "mongodb": "^6.18.0",
     "mongoose": "^8.16.5"
   },
   "devDependencies": {
