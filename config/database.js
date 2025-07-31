@@ -17,20 +17,27 @@ const connectDB = async () => {
     
     // Listen for connection events
     mongoose.connection.on('connected', () => {
-      console.log('📡 Mongoose connected to MongoDB Atlas');
+      console.log('📡 [EVENT] Mongoose connected to MongoDB Atlas');
     });
 
     mongoose.connection.on('error', (err) => {
-      console.error('❌ Mongoose connection error:', err);
+      console.error('❌ [EVENT] Mongoose connection error:', err);
     });
 
     mongoose.connection.on('disconnected', () => {
-      console.log('📴 Mongoose disconnected from MongoDB');
+      console.log('📴 [EVENT] Mongoose disconnected from MongoDB');
     });
 
     mongoose.connection.on('reconnected', () => {
-      console.log('🔄 Mongoose reconnected to MongoDB');
+      console.log('🔄 [EVENT] Mongoose reconnected to MongoDB');
     });
+
+    // Extra: Log connection state every 10 seconds for debugging
+    setInterval(() => {
+      const state = mongoose.connection.readyState;
+      const stateMap = ['disconnected', 'connected', 'connecting', 'disconnecting'];
+      console.log(`[DEBUG] Mongoose connection state: ${stateMap[state] || state}`);
+    }, 10000);
 
   } catch (error) {
     console.error('❌ MongoDB connection failed:', error.message);
