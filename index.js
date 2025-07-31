@@ -6,6 +6,8 @@ const dotenv = require('dotenv').config();
 // Import custom modules
 const connectDB = require('./config/database');
 const jobRoutes = require('./routes/jobs');
+const goalRoutes = require('./routes/goals');
+const scheduleRoutes = require('./routes/schedules');
 const { errorHandler, notFound } = require('./middleware/errorHandler');
 
 const app = express();
@@ -49,6 +51,8 @@ app.get('/health', (req, res) => {
 
 // API Routes
 app.use('/api/jobs', jobRoutes);
+app.use('/api/goals', goalRoutes);
+app.use('/api/schedules', scheduleRoutes);
 
 // Catch unhandled routes
 app.use(notFound);
